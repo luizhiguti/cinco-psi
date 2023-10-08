@@ -1,31 +1,30 @@
-import Box from '@/lib/components/Box';
-import Card, { CardBody, CardHeader } from '@/lib/components/Card';
+import Card, { CardBody } from '@/lib/components/Card';
+import Center from '@/lib/components/Center';
 import Flex from '@/lib/components/Flex';
 import Image from '@/lib/components/Image';
+import Stack from '@/lib/components/Stack';
 import { Heading, Text } from '@/lib/components/Typography';
-import { Center } from '@chakra-ui/react';
 
 export default function Welcome() {
   return (
-    <Flex w='100%' bg='brown'>
-      <Center w='20%'>
-        <Image
-          p='4'
-          src='/static/logo.svg'
-          objectFit='contain'
-          alt='Logo'
-          w='70%'
-        />
-      </Center>
-      <Card bg='brown' variant='filled' justify='center'>
-        <CardHeader>
-          <Heading size='lg'>Seja bem vindo</Heading>
-        </CardHeader>
-        <CardBody>
-          <Text fontSize='lg'>
-            Realizamos um trabalho significativo com inclusão social e saúde
-            mental caminhando lado a lado.
-          </Text>
+    <Flex w='100%' h='100%' bg='brown' justify='center'>
+      <Card bg='brown' variant='filled'>
+        <CardBody display='flex' alignItems='center'>
+          <Stack>
+            <Heading size='2xl'>Seja bem vindo</Heading>
+            <Text fontSize='2xl'>
+              Realizamos um trabalho significativo com inclusão social e saúde
+              mental caminhando lado a lado.
+            </Text>
+          </Stack>
+          <Center w='100%'>
+            <Image
+              src='/static/logo.svg'
+              objectFit='contain'
+              alt='Logo'
+              w='50%'
+            />
+          </Center>
         </CardBody>
       </Card>
     </Flex>
