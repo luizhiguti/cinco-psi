@@ -4,8 +4,8 @@ import { Text } from '@/lib/components/Typography';
 
 export default function Footer() {
   return (
-    <Flex w='100%' h='100%' bg='orange' align='center' justify='center'>
-      <Stack paddingX={20} align='center' fontSize='xl'>
+    <Flex w='100%' h='100%' bg='orange' align='center' justify='center' p={2}>
+      <Stack paddingX={20} align='center' fontSize='lg' spacing={0}>
         <Text>
           <Text as='b'>Atenção: </Text>
           Este site não oferece atendimento imediato a pessoas em situação de

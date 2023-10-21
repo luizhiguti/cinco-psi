@@ -7,8 +7,8 @@ import { Heading, Text } from '@/lib/components/Typography';
 
 export default function Welcome() {
   return (
-    <Flex w='100%' h='100%' bg='brown' justify='center'>
-      <Card bg='brown' variant='filled'>
+    <Flex w='100%' h='100%' bg='surface' justify='center'>
+      <Card bg='surface' variant='filled'>
         <CardBody display='flex' alignItems='center'>
           <Stack>
             <Heading size='2xl'>Seja bem vindo</Heading>

@@ -1,12 +1,11 @@
 'use client';
-
 import Welcome from '@/components/home/Welcome';
+import styles from '@/styles/page.module.css';
 
-export default function Home() {
+export default function _Home() {
   return (
-    // <main>
-    <Welcome />
-    // {/* <About /> */}
-    // </main>
+    <main className={styles.main}>
+      <Welcome />
+    </main>
   );
 }
