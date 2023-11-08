@@ -3,8 +3,6 @@ import AboutUs from '@/components/about/AboutUs';
 import Principles from '@/components/about/Principles';
 import Box from '@/lib/components/Box';
 import Flex from '@/lib/components/Flex';
-import styles from '@/styles/page.module.css';
-import { Spacer } from '@chakra-ui/react';
 
 export default function _About() {
   return (
@@ -13,9 +11,11 @@ export default function _About() {
         <Box>
           <AboutUs />
         </Box>
-        <Box mt={12}>
-          <Principles />
-        </Box>
+        <section id='principles'>
+          <Box mt={12}>
+            <Principles />
+          </Box>
+        </section>
       </Flex>
     </main>
   );

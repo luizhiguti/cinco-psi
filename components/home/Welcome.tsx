@@ -8,21 +8,21 @@ import { Heading, Text } from '@/lib/components/Typography';
 export default function Welcome() {
   return (
     <Flex w='100%' h='100%' bg='surface' justify='center'>
-      <Card bg='surface' variant='filled'>
+      <Card bg='surface' variant='filled' w='80%'>
         <CardBody display='flex' alignItems='center'>
-          <Stack>
+          <Stack flex={1}>
             <Heading size='2xl'>Seja bem vindo</Heading>
             <Text fontSize='2xl'>
               Realizamos um trabalho significativo com inclusão social e saúde
               mental caminhando lado a lado.
             </Text>
           </Stack>
-          <Center w='100%'>
+          <Center flex={1}>
             <Image
-              src='/static/logo.svg'
+              src='/static/logo_colorful.png'
               objectFit='contain'
               alt='Logo'
-              w='50%'
+              boxSize='50%'
             />
           </Center>
         </CardBody>

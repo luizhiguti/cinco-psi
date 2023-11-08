@@ -2,18 +2,39 @@ import Box from '@/lib/components/Box';
 import Button from '@/lib/components/Button';
 import Flex from '@/lib/components/Flex';
 import HStack from '@/lib/components/HStack';
-import { Link } from '@chakra-ui/react';
 import NextLink from 'next/link';
+import { useRouter } from 'next/navigation';
 
-function SectionButton({
-  children,
-  href = '',
-}: {
-  children?: React.ReactNode;
+interface SectionButtonProps {
+  children: React.ReactNode;
   href?: string;
-}) {
+  section?: string;
+}
+
+function SectionButton({ children, href = '#', section }: SectionButtonProps) {
+  const router = useRouter();
+  const handleNavigate = (
+    e: React.MouseEvent<HTMLAnchorElement, MouseEvent>,
+  ) => {
+    // prevent default behavior
+    e.preventDefault();
+
+    // custom navigation
+    router.push(href);
+
+    if (!section) return;
+    const targetId = section;
+
+    // await for 'document' update on route changes
+    setTimeout(() => {
+      // get the element by id and use scrollIntoView
+      const elem = document.getElementById(targetId);
+      elem?.scrollIntoView({ behavior: 'smooth' });
+    }, 100);
+  };
+
   return (
-    <Link as={NextLink} href={href}>
+    <NextLink href={href} onClick={handleNavigate}>
       <Button
         variant='ghost'
         color='white'
@@ -23,7 +44,7 @@ function SectionButton({
       >
         {children}
       </Button>
-    </Link>
+    </NextLink>
   );
 }
 
@@ -39,6 +60,8 @@ export default function Navbar() {
     },
     {
       text: 'Princípios',
+      href: 'sobre',
+      section: 'principles',
     },
     {
       text: 'Equipe',
@@ -53,12 +76,13 @@ export default function Navbar() {
       text: 'Redes Sociais',
     },
   ];
+
   return (
     <Box bg='green' px={4}>
       <Flex h={16} alignItems='center' justifyContent='center'>
         <HStack>
           {sections.map((it, index) => (
-            <SectionButton key={index} href={it.href}>
+            <SectionButton key={index} href={it.href} section={it.section}>
               {it.text}
             </SectionButton>
           ))}
