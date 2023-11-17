@@ -10,7 +10,16 @@ import {
 } from '@chakra-ui/react';
 
 export default function Card({ children, ...rest }: CardProps) {
-  return <ChakraCard {...rest}>{children}</ChakraCard>;
+  const defaultProps: CardProps = {
+    bg: 'surface',
+    variant: 'filled',
+  };
+
+  return (
+    <ChakraCard {...defaultProps} {...rest}>
+      {children}
+    </ChakraCard>
+  );
 }
 
 export function CardHeader({ children, ...rest }: CardHeaderProps) {

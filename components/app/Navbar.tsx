@@ -3,7 +3,7 @@ import Button from '@/lib/components/Button';
 import Flex from '@/lib/components/Flex';
 import HStack from '@/lib/components/HStack';
 import NextLink from 'next/link';
-import { useRouter } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 
 interface SectionButtonProps {
   children: React.ReactNode;
@@ -13,6 +13,8 @@ interface SectionButtonProps {
 
 function SectionButton({ children, href = '#', section }: SectionButtonProps) {
   const router = useRouter();
+  const path = usePathname();
+
   const handleNavigate = (
     e: React.MouseEvent<HTMLAnchorElement, MouseEvent>,
   ) => {
@@ -20,7 +22,7 @@ function SectionButton({ children, href = '#', section }: SectionButtonProps) {
     e.preventDefault();
 
     // custom navigation
-    router.push(href);
+    if (href !== path) router.push(href);
 
     if (!section) return;
     const targetId = section;
@@ -56,15 +58,18 @@ export default function Navbar() {
     },
     {
       text: 'Sobre Nós',
-      href: 'sobre',
+      href: '/sobre',
+      section: 'about',
     },
     {
       text: 'Princípios',
-      href: 'sobre',
+      href: '/sobre',
       section: 'principles',
     },
     {
       text: 'Equipe',
+      href: '/sobre',
+      section: 'team',
     },
     {
       text: 'Projetos',
@@ -78,8 +83,15 @@ export default function Navbar() {
   ];
 
   return (
-    <Box bg='green' px={4}>
-      <Flex h={16} alignItems='center' justifyContent='center'>
+    <>
+      <Flex
+        bg='green'
+        position='fixed'
+        w='100%'
+        zIndex={1}
+        h={16}
+        justifyContent='center'
+      >
         <HStack>
           {sections.map((it, index) => (
             <SectionButton key={index} href={it.href} section={it.section}>
@@ -88,6 +100,7 @@ export default function Navbar() {
           ))}
         </HStack>
       </Flex>
-    </Box>
+      <Box h={16} />
+    </>
   );
 }
