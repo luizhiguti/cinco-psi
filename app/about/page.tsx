@@ -11,19 +11,13 @@ export default function _About() {
     <main className={styles.about}>
       <Flex direction='column' justify='center' bg='surface' px={12}>
         <section id='about'>
-          <Box>
-            <AboutUs />
-          </Box>
+          <AboutUs />
         </section>
         <section id='principles'>
-          <Box>
-            <Principles />
-          </Box>
+          <Principles />
         </section>
         <section id='team'>
-          <Box flex={1}>
-            <Team />
-          </Box>
+          <Team />
         </section>
       </Flex>
     </main>

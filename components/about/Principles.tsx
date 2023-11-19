@@ -1,8 +1,9 @@
 import Box from '@/lib/components/Box';
-import Card, { CardBody, CardHeader } from '@/lib/components/Card';
+import Card, { CardBody, CardFooter, CardHeader } from '@/lib/components/Card';
 import Center from '@/lib/components/Center';
 import Flex from '@/lib/components/Flex';
 import Icon from '@/lib/components/Icon';
+import Image from '@/lib/components/Image';
 import SimpleGrid from '@/lib/components/SimpleGrid';
 import Stack from '@/lib/components/Stack';
 import { Heading, Text } from '@/lib/components/Typography';
@@ -35,8 +36,8 @@ export default function Principles() {
   return (
     <Card bg='surface' variant='filled'>
       <CardHeader>
-        <Center
-          px={16}
+        <Flex
+          align='center'
           _before={{
             content: '""',
             borderBottom: '1px solid',
@@ -55,7 +56,7 @@ export default function Principles() {
           <Heading size='2xl' pt={4}>
             Princípios
           </Heading>
-        </Center>
+        </Flex>
       </CardHeader>
       <CardBody>
         <SimpleGrid columns={3} justifyItems='center'>
@@ -77,6 +78,31 @@ export default function Principles() {
             icon={<Icon path={mdiHandHeart} color='orange' boxSize='auto' />}
           />
         </SimpleGrid>
+        <Flex
+          mt={12}
+          align='center'
+          _before={{
+            content: '""',
+            borderBottom: '1px solid',
+            borderColor: 'black',
+            flexGrow: 1,
+            mr: 8,
+          }}
+          _after={{
+            content: '""',
+            borderBottom: '1px solid',
+            borderColor: 'black',
+            flexGrow: 1,
+            ml: 8,
+          }}
+        >
+          <Image
+            src='/static/logos/icon_black.png'
+            objectFit='contain'
+            alt='Logo'
+            boxSize='75px'
+          />
+        </Flex>{' '}
       </CardBody>
     </Card>
   );

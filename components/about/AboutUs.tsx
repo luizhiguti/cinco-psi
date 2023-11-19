@@ -11,7 +11,7 @@ export default function AboutUs() {
         <Flex w='100%' flex={1}>
           <Image
             objectFit='contain'
-            src='/static/as_psis.jpg'
+            src='/static/psis/as_psis.jpg'
             alt='As Psis'
             boxSize='90%'
           />

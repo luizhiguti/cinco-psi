@@ -19,7 +19,7 @@ export default function Welcome() {
           </Stack>
           <Center flex={1}>
             <Image
-              src='/static/logo_colorful.png'
+              src='/static/logos/logo_colorful.png'
               objectFit='contain'
               alt='Logo'
               boxSize='50%'
