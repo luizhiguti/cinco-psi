@@ -1,7 +1,7 @@
 'use client';
 import Footer from '@/components/app/Footer';
 import Navbar from '@/components/app/Navbar';
-import SimpleGrid from '@/lib/components/SimpleGrid';
+import Box from '@/lib/components/Box';
 
 export default function RootLayout({
   children,
@@ -9,10 +9,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <SimpleGrid>
+    <Box>
       <Navbar />
       {children}
       <Footer />
-    </SimpleGrid>
+    </Box>
   );
 }
