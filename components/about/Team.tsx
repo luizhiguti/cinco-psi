@@ -1,14 +1,13 @@
 import Box from '@/lib/components/Box';
-import Button from '@/lib/components/Button';
 import Card, { CardBody, CardHeader } from '@/lib/components/Card';
 import Icon from '@/lib/components/Icon';
 import IconButton from '@/lib/components/IconButton';
 import Image from '@/lib/components/Image';
 import { Heading, Text } from '@/lib/components/Typography';
 import {
-  mdiInstagram,
-  mdiChevronRightCircle,
   mdiChevronLeftCircle,
+  mdiChevronRightCircle,
+  mdiInstagram,
 } from '@mdi/js';
 import NextLink from 'next/link';
 import { useState } from 'react';
@@ -35,22 +34,22 @@ function CustomSlide(props: SlideData) {
     <Image
       src={props.imgSrc}
       alt={props.imgAlt}
-      height='50vh'
+      height='75vh'
       objectFit='contain'
       width='100%'
     />
   ) : (
     <Box>
       <Card>
-        <CardHeader>
-          <Heading fontSize='3xl'>{props.title}</Heading>
+        <CardHeader fontSize='2xl'>
+          <Heading size='xl'>{props.title}</Heading>
           <NextLink href={props.href} target='_blank'>
             <Icon path={mdiInstagram} mr={2} />
             {props.subtitle}
           </NextLink>
         </CardHeader>
         <CardBody>
-          <Text>{props.description}</Text>
+          <Text fontSize='xl'>{props.description}</Text>
         </CardBody>
       </Card>
     </Box>
@@ -73,7 +72,7 @@ function CustomArrows({ slider }: { slider: Slider | null }) {
         size='sm'
         colorScheme='surface'
       >
-        <Icon path={mdiChevronLeftCircle} boxSize='auto' color='orange' />
+        <Icon path={mdiChevronLeftCircle} boxSize='auto' color='brown' />
       </IconButton>
       {/* Right Icon */}
       <IconButton
@@ -88,7 +87,7 @@ function CustomArrows({ slider }: { slider: Slider | null }) {
         size='sm'
         colorScheme='surface'
       >
-        <Icon path={mdiChevronRightCircle} boxSize='auto' color='orange' />
+        <Icon path={mdiChevronRightCircle} boxSize='auto' color='brown' />
       </IconButton>
     </>
   );

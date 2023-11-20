@@ -63,19 +63,17 @@ export default function Principles() {
           <PrincipleCard
             title='Missão'
             text='Promover saúde mental com inclusão social e respeito às diversidades'
-            icon={
-              <Icon path={mdiBullseyeArrow} color='orange' boxSize='auto' />
-            }
+            icon={<Icon path={mdiBullseyeArrow} color='brown' boxSize='auto' />}
           />
           <PrincipleCard
             title='Visão'
             text='Ser referência em saúde mental online no país e no mundo, com olhar inclusivo e acolhedor'
-            icon={<Icon path={mdiEye} color='orange' boxSize='auto' />}
+            icon={<Icon path={mdiEye} color='brown' boxSize='auto' />}
           />
           <PrincipleCard
             title='Valores'
             text='Ética, Inclusão Social, Psicoeducação, Sigilo, Confiança e Respeito'
-            icon={<Icon path={mdiHandHeart} color='orange' boxSize='auto' />}
+            icon={<Icon path={mdiHandHeart} color='brown' boxSize='auto' />}
           />
         </SimpleGrid>
         <Flex
