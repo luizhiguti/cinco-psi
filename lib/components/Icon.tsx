@@ -1,8 +1,8 @@
-import MdiIcon from '@mdi/react';
 import {
   Icon as ChakraIcon,
   IconProps as ChakraIconProps,
 } from '@chakra-ui/react';
+import MdiIcon from '@mdi/react';
 
 interface IconProps extends ChakraIconProps {
   path: string;

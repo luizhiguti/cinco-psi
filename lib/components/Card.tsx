@@ -1,12 +1,12 @@
 import {
-  Card as ChakraCard,
-  CardHeader as ChakraCardHeader,
-  CardBody as ChakraCardBody,
-  CardFooter as ChakraCardFooter,
-  CardProps,
-  CardHeaderProps,
   CardBodyProps,
   CardFooterProps,
+  CardHeaderProps,
+  CardProps,
+  Card as ChakraCard,
+  CardBody as ChakraCardBody,
+  CardFooter as ChakraCardFooter,
+  CardHeader as ChakraCardHeader,
 } from '@chakra-ui/react';
 
 export default function Card({ children, ...rest }: CardProps) {

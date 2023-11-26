@@ -1,8 +1,8 @@
 import {
-  Text as ChakraText,
   Heading as ChakraHeading,
-  TextProps,
+  Text as ChakraText,
   HeadingProps,
+  TextProps,
 } from '@chakra-ui/react';
 
 export function Text({ children, ...rest }: TextProps) {

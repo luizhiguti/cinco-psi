@@ -100,7 +100,7 @@ export default function Principles() {
             alt='Logo'
             boxSize='75px'
           />
-        </Flex>{' '}
+        </Flex>
       </CardBody>
     </Card>
   );

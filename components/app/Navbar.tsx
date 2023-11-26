@@ -67,15 +67,9 @@ export default function Navbar() {
       section: 'principles',
     },
     {
-      text: 'Equipe',
-      href: '/sobre',
-      section: 'team',
-    },
-    {
       text: 'Projetos',
-    },
-    {
-      text: 'Dúvidas',
+      href: '/sobre',
+      section: 'projects',
     },
     {
       text: 'Redes Sociais',
