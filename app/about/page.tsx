@@ -9,12 +9,12 @@ export default function _About() {
   return (
     <main className={styles.about}>
       <Flex direction='column' justify='center' bg='surface' px={12}>
-        {/* <section id='about'>
+        <section id='about'>
           <AboutUs />
         </section>
         <section id='principles'>
           <Principles />
-        </section> */}
+        </section>
         <section id='projects'>
           <Projects />
         </section>

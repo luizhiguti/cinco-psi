@@ -1,5 +1,5 @@
 import {
-  TabsProps as ChakraTabsProps,
+  TabsProps,
   Tab,
   TabList,
   TabPanel,
@@ -9,26 +9,35 @@ import {
 } from '@chakra-ui/react';
 import { ReactNode } from 'react';
 
-interface TabsProps extends Partial<ChakraTabsProps> {
-  tabs: {
-    tab: ReactNode;
-    props?: TabProps;
-  }[];
+export interface TabsComponentTab {
+  tab: ReactNode;
+  props?: TabProps;
+}
+
+export interface TabsComponentProps extends Partial<TabsProps> {
+  tabs: Array<TabsComponentTab>;
   panels: ReactNode[];
 }
 
-export default function TabsComponent(props: TabsProps) {
+export default function TabsComponent({
+  tabs,
+  panels,
+  ...props
+}: TabsComponentProps) {
+  const tabDefaultProps: TabProps = {
+    _selected: { borderColor: 'green' },
+  };
   return (
     <Tabs {...props}>
       <TabList>
-        {props.tabs.map((it, index) => (
-          <Tab key={index} {...it.props}>
+        {tabs.map((it, index) => (
+          <Tab key={index} {...tabDefaultProps} {...it.props}>
             {it.tab}
           </Tab>
         ))}
       </TabList>
       <TabPanels>
-        {props.panels.map((it, index) => (
+        {panels.map((it, index) => (
           <TabPanel key={index}>{it}</TabPanel>
         ))}
       </TabPanels>

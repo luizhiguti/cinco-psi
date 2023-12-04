@@ -1,6 +1,5 @@
 import Box from '@/lib/components/Box';
-import Card, { CardBody, CardFooter, CardHeader } from '@/lib/components/Card';
-import Center from '@/lib/components/Center';
+import Card, { CardBody, CardHeader } from '@/lib/components/Card';
 import Flex from '@/lib/components/Flex';
 import Icon from '@/lib/components/Icon';
 import Image from '@/lib/components/Image';
