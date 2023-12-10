@@ -72,7 +72,9 @@ export default function Navbar() {
       section: 'projects',
     },
     {
-      text: 'Redes Sociais',
+      text: 'Contatos',
+      href: '/sobre',
+      section: 'contacts',
     },
   ];
 

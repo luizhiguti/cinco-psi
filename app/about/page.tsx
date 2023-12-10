@@ -1,5 +1,6 @@
 'use client';
 import AboutUs from '@/components/about/AboutUs';
+import Contacts from '@/components/about/Contacts';
 import Principles from '@/components/about/Principles';
 import Projects from '@/components/about/Projects';
 import Flex from '@/lib/components/Flex';
@@ -17,6 +18,9 @@ export default function _About() {
         </section>
         <section id='projects'>
           <Projects />
+        </section>
+        <section id='contacts'>
+          <Contacts />
         </section>
       </Flex>
     </main>
