@@ -160,7 +160,7 @@ export default function Projects() {
               props: { isDisabled: true },
             },
           ]}
-          panels={[<ProjetoIncluir />]}
+          panels={[<ProjetoIncluir key='incluir' />]}
         />
       </CardBody>
     </Card>
