@@ -1,0 +1,9 @@
+$navbar-height: 64px;
+
+.about section {
+  scroll-margin-top: $navbar-height;
+}
+
+.fillHeight {
+  min-height: calc(100vh - $navbar-height);
+}
