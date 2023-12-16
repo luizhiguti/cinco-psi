@@ -17,7 +17,7 @@ import 'slick-carousel/slick/slick.css';
 import styles from '@/styles/about.module.scss';
 
 interface ImageSlideProps {
-  imgSrc: string;
+  imgSrc: string | string[];
   imgAlt: string;
 }
 interface ContentSlideProps {
@@ -31,15 +31,15 @@ type SlideData = ImageSlideProps | ContentSlideProps;
 
 function CustomSlide(props: SlideData) {
   const isImageSlide = 'imgSrc' in props;
-  return isImageSlide ? (
-    <Image
-      src={props.imgSrc}
-      alt={props.imgAlt}
-      height='75vh'
-      objectFit='contain'
-      width='100%'
-    />
-  ) : (
+  const sliderSettings: SliderSettings = {
+    dots: true,
+    arrows: false,
+    infinite: true,
+    autoplay: false,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+  };
+  return !isImageSlide ? (
     <Box>
       <Card>
         <CardHeader fontSize='2xl'>
@@ -54,6 +54,27 @@ function CustomSlide(props: SlideData) {
         </CardBody>
       </Card>
     </Box>
+  ) : Array.isArray(props.imgSrc) ? (
+    <Slider {...sliderSettings}>
+      {props.imgSrc.map((it, index) => (
+        <Image
+          key={index}
+          src={it}
+          alt={props.imgAlt}
+          height='75vh'
+          objectFit='contain'
+          width='100%'
+        />
+      ))}
+    </Slider>
+  ) : (
+    <Image
+      src={props.imgSrc}
+      alt={props.imgAlt}
+      height='75vh'
+      objectFit='contain'
+      width='100%'
+    />
   );
 }
 
@@ -96,7 +117,7 @@ function CustomArrows({ slider }: { slider: Slider | null }) {
 
 export default function AboutUs() {
   const sliderSettings: SliderSettings = {
-    dots: true,
+    dots: false,
     arrows: false,
     infinite: true,
     autoplay: true,
@@ -104,11 +125,12 @@ export default function AboutUs() {
     autoplaySpeed: 5000,
     slidesToShow: 2,
     slidesToScroll: 2,
+    draggable: false,
   };
   const [slider, setSlider] = useState<Slider | null>(null);
   const sliderData: SlideData[] = [
     {
-      imgSrc: '/static/psis/as_psis.jpg',
+      imgSrc: ['/static/psis/as_psis.jpg', '/static/psis/as_psis.jpg'],
       imgAlt: 'As Psis',
     },
     {
