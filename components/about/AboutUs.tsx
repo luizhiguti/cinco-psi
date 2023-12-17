@@ -15,6 +15,7 @@ import Slider, { Settings as SliderSettings } from 'react-slick';
 import 'slick-carousel/slick/slick-theme.css';
 import 'slick-carousel/slick/slick.css';
 import styles from '@/styles/about.module.scss';
+import { useBreakpointValue } from '@chakra-ui/react';
 
 interface ImageSlideProps {
   imgSrc: string | string[];
@@ -35,26 +36,30 @@ function CustomSlide(props: SlideData) {
     dots: true,
     arrows: false,
     infinite: true,
-    autoplay: false,
+    autoplay: true,
+    speed: 500,
+    autoplaySpeed: 2000,
     slidesToShow: 1,
     slidesToScroll: 1,
+    draggable: useBreakpointValue({ base: false, md: true }),
+    swipe: false,
   };
   return !isImageSlide ? (
-    <Box>
-      <Card>
-        <CardHeader fontSize='2xl'>
-          <Heading size='xl'>{props.title}</Heading>
-          <NextLink href={props.href} target='_blank'>
-            <Icon path={mdiInstagram} mr={2} />
-            {props.subtitle}
-          </NextLink>
-        </CardHeader>
-        <CardBody>
-          <Text fontSize='xl'>{props.description}</Text>
-        </CardBody>
-      </Card>
-    </Box>
+    // For slides with text
+    <Card>
+      <CardHeader fontSize={{ base: 'lg', md: 'xl' }}>
+        <Heading>{props.title}</Heading>
+        <NextLink href={props.href} target='_blank'>
+          <Icon path={mdiInstagram} mr={2} />
+          {props.subtitle}
+        </NextLink>
+      </CardHeader>
+      <CardBody>
+        <Text fontSize={{ base: 'md', md: 'lg' }}>{props.description}</Text>
+      </CardBody>
+    </Card>
   ) : Array.isArray(props.imgSrc) ? (
+    // For slides with multiple pictures
     <Slider {...sliderSettings}>
       {props.imgSrc.map((it, index) => (
         <Image
@@ -68,13 +73,24 @@ function CustomSlide(props: SlideData) {
       ))}
     </Slider>
   ) : (
-    <Image
-      src={props.imgSrc}
-      alt={props.imgAlt}
-      height='75vh'
-      objectFit='contain'
-      width='100%'
-    />
+    // For slides with a single picture
+    <>
+      <Image
+        src={props.imgSrc}
+        alt={props.imgAlt}
+        height='75vh'
+        objectFit='contain'
+        width='100%'
+      />
+      <Text
+        display={{ base: 'block', md: 'none' }}
+        textAlign='center'
+        fontStyle='italic'
+        fontSize='2xl'
+      >
+        {props.imgAlt}
+      </Text>
+    </>
   );
 }
 
@@ -123,9 +139,9 @@ export default function AboutUs() {
     autoplay: true,
     speed: 500,
     autoplaySpeed: 5000,
-    slidesToShow: 2,
-    slidesToScroll: 2,
-    draggable: false,
+    slidesToShow: useBreakpointValue({ base: 1, md: 2 }),
+    slidesToScroll: useBreakpointValue({ base: 1, md: 2 }),
+    draggable: useBreakpointValue({ base: true, md: false }),
   };
   const [slider, setSlider] = useState<Slider | null>(null);
   const sliderData: SlideData[] = [
@@ -161,9 +177,11 @@ export default function AboutUs() {
   ];
 
   return (
-    <Card className={styles.fillHeight} align='center' p={12}>
-      <Box width='80%'>
-        <CustomArrows slider={slider} />
+    <Card className={styles.fillHeight} align='center' p={{ base: 4, md: 12 }}>
+      <Box width={{ base: '100%', md: '80%' }}>
+        {useBreakpointValue({ base: false, md: true }) && (
+          <CustomArrows slider={slider} />
+        )}
         <Slider {...sliderSettings} ref={(slider) => setSlider(slider)}>
           {sliderData.map((it, index) => (
             <CustomSlide {...it} key={index} />
