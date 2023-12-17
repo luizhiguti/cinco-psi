@@ -1,9 +1,10 @@
-import Card, { CardBody, CardFooter, CardHeader } from '@/lib/components/Card';
+import Card, { CardBody, CardHeader } from '@/lib/components/Card';
 import Flex from '@/lib/components/Flex';
 import Icon from '@/lib/components/Icon';
 import Image from '@/lib/components/Image';
 import Stack from '@/lib/components/Stack';
 import { Heading, Text } from '@/lib/components/Typography';
+import { useBreakpointValue } from '@chakra-ui/react';
 import { mdiEmail, mdiInstagram } from '@mdi/js';
 import NextLink from 'next/link';
 
@@ -41,14 +42,14 @@ export default function Contacts() {
           align='center'
           _before={{
             content: '""',
-            borderBottom: '1px solid',
+            borderBottom: useBreakpointValue  ({ base: 'none', md: '1px solid' }),
             borderColor: 'black',
             flexGrow: 1,
             mr: 8,
           }}
           _after={{
             content: '""',
-            borderBottom: '1px solid',
+            borderBottom: useBreakpointValue({ base: 'none', md: '1px solid' }),
             borderColor: 'black',
             flexGrow: 1,
             ml: 8,

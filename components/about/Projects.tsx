@@ -12,6 +12,9 @@ import styles from '@/styles/about.module.scss';
 import { mdiChatQuestionOutline, mdiOpenInNew } from '@mdi/js';
 import NextLink from 'next/link';
 import FlashyButton from './FlashyButton';
+import SimpleGrid from '@/lib/components/SimpleGrid';
+import Grid, { GridItem } from '@/lib/components/Grid';
+import { useBreakpointValue } from '@chakra-ui/react';
 
 function ProjetoIncluir() {
   const faq: AccordionComponentItem[] = [
@@ -81,16 +84,16 @@ function ProjetoIncluir() {
   const faqPretty: AccordionComponentItem[] = faq.map((it) => ({
     ...it,
     props: {
-      m: 4,
+      m: useBreakpointValue({ base: 2, md: 4 }),
       py: 2,
       border: '2px solid',
       borderColor: 'green',
     },
     titleProps: {
-      fontSize: 'x-large',
+      fontSize: useBreakpointValue({ base: 'large ', md: 'x-large' }),
     },
     contentProps: {
-      fontSize: 'large',
+      fontSize: useBreakpointValue({ base: 'md ', md: 'large' }),
       color: 'green',
     },
     iconProps: {
@@ -99,44 +102,49 @@ function ProjetoIncluir() {
   }));
   return (
     <Card align='center'>
-      <CardHeader display='flex' flexDir='row'>
-        <Heading
-          flex={2}
-          fontWeight='regular'
-          fontSize='28px'
-          textAlign='justify'
-        >
-          O projeto nasceu com o intuito de proporcionar uma Psicologia
-          acessível, próxima e empática a todos, com atendimento
-          psicoterapêutico online.
-        </Heading>
-        <Center flex={1}>
-          <NextLink
-            href='https://docs.google.com/forms/d/e/1FAIpQLSdKdcnlV4OTtzkkwHXfOxSYQWmqlCVE27xwMweH36TiNVXX5g/viewform'
-            target='_blank'
-          >
-            <FlashyButton
-              bg='brown'
-              fontWeight='bold'
-              fontSize='28px'
-              p={2}
-              pb={0}
+      <CardHeader>
+        <Grid templateColumns='repeat(3, 1fr)' gap={4}>
+          <GridItem colSpan={{ base: 3, md: 2 }}>
+            <Heading
+              fontWeight='regular'
+              fontSize={{ base: 'xl', md: '2xl' }}
+              textAlign='justify'
             >
-              Tenho interesse
-            </FlashyButton>
-          </NextLink>
-        </Center>
+              O projeto nasceu com o intuito de proporcionar uma Psicologia
+              acessível, próxima e empática a todos, com atendimento
+              psicoterapêutico online.
+            </Heading>
+          </GridItem>
+          <GridItem colSpan={{ base: 3, md: 1 }}>
+            <Center>
+              <NextLink
+                href='https://docs.google.com/forms/d/e/1FAIpQLSdKdcnlV4OTtzkkwHXfOxSYQWmqlCVE27xwMweH36TiNVXX5g/viewform'
+                target='_blank'
+              >
+                <FlashyButton
+                  bg='brown'
+                  fontWeight='bold'
+                  fontSize={{ base: 'xl', md: '2xl' }}
+                  p={2}
+                  pb={0}
+                >
+                  Tenho interesse
+                </FlashyButton>
+              </NextLink>
+            </Center>
+          </GridItem>
+        </Grid>
       </CardHeader>
-      <CardBody w='90%'>
+      <CardBody w='100%'>
         <Stack align='center'>
-          <Heading w='fit-content'>
+          <Heading w='fit-content' size={{ base: 'md', md: 'xl' }}>
             Dúvidas frequentes
             <Icon
               path={mdiChatQuestionOutline}
               color='orange'
-              ml={4}
-              boxSize={16}
-              mt={-8}
+              ml={{ base: 2, md: 4 }}
+              boxSize={{ base: 8, md: 16 }}
+              mt={{ base: -4, md: -8 }}
             />
           </Heading>
           <AccordionComponent w='100%' items={faqPretty} />
@@ -151,12 +159,19 @@ export default function Projects() {
     <Card className={styles.fillHeight} bg='surface'>
       <CardBody>
         <Tabs
+          overflowX='auto'
           tabs={[
             {
-              tab: <Heading>Projeto Incluir</Heading>,
+              tab: (
+                <Heading size={{ base: 'md', md: 'xl' }}>
+                  Projeto Incluir
+                </Heading>
+              ),
             },
             {
-              tab: <Heading>Em breve...</Heading>,
+              tab: (
+                <Heading size={{ base: 'md', md: 'xl' }}>Em breve...</Heading>
+              ),
               props: { isDisabled: true },
             },
           ]}

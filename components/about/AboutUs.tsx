@@ -86,7 +86,8 @@ function CustomSlide(props: SlideData) {
         display={{ base: 'block', md: 'none' }}
         textAlign='center'
         fontStyle='italic'
-        fontSize='2xl'
+        fontSize='xl'
+        p={2}
       >
         {props.imgAlt}
       </Text>

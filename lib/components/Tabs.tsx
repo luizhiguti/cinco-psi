@@ -15,7 +15,7 @@ export interface TabsComponentTab {
 }
 
 export interface TabsComponentProps extends Partial<TabsProps> {
-  tabs: Array<TabsComponentTab>;
+  tabs: Array<TabsComponentTab  >;
   panels: ReactNode[];
 }
 
