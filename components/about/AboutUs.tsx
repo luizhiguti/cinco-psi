@@ -3,19 +3,21 @@ import Card, { CardBody, CardHeader } from '@/lib/components/Card';
 import Icon from '@/lib/components/Icon';
 import IconButton from '@/lib/components/IconButton';
 import Image from '@/lib/components/Image';
+import List, { ListItem } from '@/lib/components/List';
 import { Heading, Text } from '@/lib/components/Typography';
+import styles from '@/styles/about.module.scss';
+import { useBreakpointValue } from '@chakra-ui/react';
 import {
   mdiChevronLeftCircle,
   mdiChevronRightCircle,
   mdiInstagram,
+  mdiLightbulbOnOutline,
 } from '@mdi/js';
 import NextLink from 'next/link';
 import { useState } from 'react';
 import Slider, { Settings as SliderSettings } from 'react-slick';
 import 'slick-carousel/slick/slick-theme.css';
 import 'slick-carousel/slick/slick.css';
-import styles from '@/styles/about.module.scss';
-import { useBreakpointValue } from '@chakra-ui/react';
 
 interface ImageSlideProps {
   imgSrc: string | string[];
@@ -23,8 +25,9 @@ interface ImageSlideProps {
 }
 interface ContentSlideProps {
   title: string;
-  subtitle: string;
-  href: string;
+  subtitle?: string;
+  postscript?: string;
+  href?: string;
   description: string;
 }
 
@@ -38,7 +41,7 @@ function CustomSlide(props: SlideData) {
     infinite: true,
     autoplay: true,
     speed: 500,
-    autoplaySpeed: 2000,
+    autoplaySpeed: 1500,
     slidesToShow: 1,
     slidesToScroll: 1,
     draggable: useBreakpointValue({ base: false, md: true }),
@@ -49,13 +52,39 @@ function CustomSlide(props: SlideData) {
     <Card>
       <CardHeader fontSize={{ base: 'lg', md: 'xl' }}>
         <Heading>{props.title}</Heading>
-        <NextLink href={props.href} target='_blank'>
-          <Icon path={mdiInstagram} mr={2} />
-          {props.subtitle}
-        </NextLink>
+        {props.href && (
+          <NextLink href={props.href} target='_blank'>
+            <Icon path={mdiInstagram} mr={2} />
+            {props.subtitle}
+          </NextLink>
+        )}
       </CardHeader>
       <CardBody>
         <Text fontSize={{ base: 'md', md: 'lg' }}>{props.description}</Text>
+        <List
+          display={props.postscript ? 'block' : 'none'}
+          m={2}
+          p={2}
+          bg='brown'
+          alignContent='center'
+          justifyItems='center'
+        >
+          <ListItem
+            fontSize={{ base: 'md', md: 'lg' }}
+            display='flex'
+            flexDir='row'
+            alignItems='center'
+            textAlign='center'
+          >
+            <Icon
+              path={mdiLightbulbOnOutline}
+              boxSize={{ base: '15%', md: '10%' }}
+              mr={2}
+              color='green'
+            />
+            {props.postscript}
+          </ListItem>
+        </List>
       </CardBody>
     </Card>
   ) : Array.isArray(props.imgSrc) ? (
@@ -66,7 +95,7 @@ function CustomSlide(props: SlideData) {
           key={index}
           src={it}
           alt={props.imgAlt}
-          height='75vh'
+          height='70vh'
           objectFit='contain'
           width='100%'
         />
@@ -139,7 +168,7 @@ export default function AboutUs() {
     infinite: true,
     autoplay: true,
     speed: 500,
-    autoplaySpeed: 5000,
+    autoplaySpeed: 6000,
     slidesToShow: useBreakpointValue({ base: 1, md: 2 }),
     slidesToScroll: useBreakpointValue({ base: 1, md: 2 }),
     draggable: useBreakpointValue({ base: true, md: false }),
@@ -147,7 +176,12 @@ export default function AboutUs() {
   const [slider, setSlider] = useState<Slider | null>(null);
   const sliderData: SlideData[] = [
     {
-      imgSrc: ['/static/psis/as_psis.jpg', '/static/psis/as_psis.jpg'],
+      imgSrc: [
+        '/static/psis/as_psis.jpg',
+        '/static/psis/as_psis_1.jpg',
+        '/static/psis/as_psis_2.jpg',
+        '/static/psis/as_psis_3.jpg',
+      ],
       imgAlt: 'As Psis',
     },
     {
@@ -164,16 +198,42 @@ export default function AboutUs() {
       contribuir para a Ramificação desta árvore que é a psicologia,
       visando produzir frutos de acolhimento e vulnerabilidade.`,
     },
-
     {
-      imgSrc: '/static/psis/namoradinha.png',
+      imgSrc: '/static/psis/andreza.jpg',
+      imgAlt: 'Andreza',
+    },
+    {
+      title: 'Andreza',
+      description: `Psicóloga Clínica e Organizacional, Pós Graduada em Psicologia
+      Organizacional e do Trabalho com foco na Terapia Cognitiva
+      Comportamental - 01ª Região - DF 25189.`,
+      postscript:
+        'Uma curiosidade sobre mim: Eu amo chocolate, quase que uma chocólatra',
+    },
+    {
+      imgSrc: '/static/psis/luanna.jpg',
+      imgAlt: 'Luanna',
+    },
+    {
+      title: 'Luanna',
+      description: `Psicóloga Clínica, Pós Graduanda em Avaliação Psicológica. 
+      Incentivadora do autoconhecimento como ferramenta de transformação  - 
+      CRP 01/24996.
+      Uma curiosidade sobre mim: Faço quase tudo ouvindo música e amo poemas`,
+      postscript: `Uma curiosidade sobre mim: Faço quase tudo ouvindo música e amo poemas`,
+    },
+    {
+      imgSrc: '/static/psis/stephani.jpg',
       imgAlt: 'Stephani',
     },
     {
       title: 'Stephani',
       subtitle: '@stephani_almeida',
       href: 'https://www.instagram.com/stephani_almeida',
-      description: 'Uma grande de uma gostosa',
+      description: `Psicóloga Clínica e Organizacional, Pós Graduanda em Avaliação
+      Psicológica com foco na Terapia Cognitiva Comportamental - 01ª Região -
+      DF 25024.`,
+      postscript: `Uma curiosidade sobre mim: Eu amo ler livros e jogar jogos online`,
     },
   ];
 
