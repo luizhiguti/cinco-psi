@@ -1,20 +1,18 @@
 import AccordionComponent, {
   AccordionComponentItem,
 } from '@/lib/components/Accordion';
-import Button from '@/lib/components/Button';
 import Card, { CardBody, CardHeader } from '@/lib/components/Card';
 import Center from '@/lib/components/Center';
+import Grid, { GridItem } from '@/lib/components/Grid';
 import Icon from '@/lib/components/Icon';
 import Stack from '@/lib/components/Stack';
 import Tabs from '@/lib/components/Tabs';
 import { Heading } from '@/lib/components/Typography';
 import styles from '@/styles/about.module.scss';
+import { useBreakpointValue } from '@chakra-ui/react';
 import { mdiChatQuestionOutline, mdiOpenInNew } from '@mdi/js';
 import NextLink from 'next/link';
 import FlashyButton from './FlashyButton';
-import SimpleGrid from '@/lib/components/SimpleGrid';
-import Grid, { GridItem } from '@/lib/components/Grid';
-import { useBreakpointValue } from '@chakra-ui/react';
 
 function ProjetoIncluir() {
   const faq: AccordionComponentItem[] = [
@@ -81,19 +79,20 @@ function ProjetoIncluir() {
       ),
     },
   ];
+  const breakpointMobile = useBreakpointValue({ base: true, md: false });
   const faqPretty: AccordionComponentItem[] = faq.map((it) => ({
     ...it,
     props: {
-      m: useBreakpointValue({ base: 2, md: 4 }),
+      m: breakpointMobile ? 2 : 4,
       py: 2,
       border: '2px solid',
       borderColor: 'green',
     },
     titleProps: {
-      fontSize: useBreakpointValue({ base: 'large ', md: 'x-large' }),
+      fontSize: breakpointMobile ? 'large' : 'x-large',
     },
     contentProps: {
-      fontSize: useBreakpointValue({ base: 'md ', md: 'large' }),
+      fontSize: breakpointMobile ? 'large' : 'x-large',
       color: 'green',
     },
     iconProps: {
