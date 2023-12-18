@@ -9,7 +9,12 @@ import styles from '@/styles/about.module.scss';
 export default function _About() {
   return (
     <main className={styles.about}>
-      <Flex direction='column' justify='center' bg='surface' px={12}>
+      <Flex
+        direction='column'
+        justify='center'
+        bg='surface'
+        px={{ base: 0, md: 12 }}
+      >
         <section id='about'>
           <AboutUs />
         </section>
