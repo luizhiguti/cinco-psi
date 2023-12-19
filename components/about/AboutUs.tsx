@@ -191,8 +191,8 @@ export default function AboutUs() {
       description: `O cinco.psi é composto por mulheres que tiveram seus caminhos
       ligados pela Psicologia. Trilhando uma jornada com muito
       companheirismo, risos, choros, abraços e aprendizados. Estas cinco
-      mulheres decidiram que era hora de expandir essa rede de acolhimento
-      A logotipo se baseia na perspectiva de que a Psicologia é uma árvore
+      mulheres decidiram que era hora de expandir essa rede de acolhimento.
+      A nossa logotipo se baseia na perspectiva de que a Psicologia é uma árvore
       com diversas ramificações de galhos, folhas e frutos. Portanto, o
       cinco.psi acredita que com a promoção de Saúde Mental é possível
       contribuir para a Ramificação desta árvore que é a psicologia,
@@ -218,9 +218,18 @@ export default function AboutUs() {
       title: 'Luanna',
       description: `Psicóloga Clínica, Pós Graduanda em Avaliação Psicológica. 
       Incentivadora do autoconhecimento como ferramenta de transformação  - 
-      CRP 01/24996.
-      Uma curiosidade sobre mim: Faço quase tudo ouvindo música e amo poemas`,
+      CRP 01/24996.`,
       postscript: `Uma curiosidade sobre mim: Faço quase tudo ouvindo música e amo poemas`,
+    },
+    {
+      imgSrc: '/static/psis/nadia.jpg',
+      imgAlt: 'Nádia',
+    },
+    {
+      title: 'Nádia',
+      description: `Psicóloga Clínica, Pós Graduada em Psicanálise e Pós Graduanda em
+      Psicologia Jurídica com Ênfase em Perícia Psicológica - CRP 01/25013.`,
+      postscript: `Uma curiosidade sobre mim: Amo ler e dançar, admiro as diferentes maneiras que as pessoas encontram para se expressar`,
     },
     {
       imgSrc: '/static/psis/stephani.jpg',
@@ -228,8 +237,6 @@ export default function AboutUs() {
     },
     {
       title: 'Stephani',
-      subtitle: '@stephani_almeida',
-      href: 'https://www.instagram.com/stephani_almeida',
       description: `Psicóloga Clínica e Organizacional, Pós Graduanda em Avaliação
       Psicológica com foco na Terapia Cognitiva Comportamental - 01ª Região -
       DF 25024.`,

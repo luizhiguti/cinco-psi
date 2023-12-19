@@ -43,8 +43,8 @@ function ProjetoIncluir() {
     {
       title: '4 - Qual valor das sessões?',
       content: `O Conselho de Ética da Psicologia não permite que os profissionais
-      divulguem o valor dos atendimentos publicamente, para saber o valor
-      da sessão você deve entrar em contato com nós.`,
+      divulguem o valor dos atendimentos publicamente. Para saber o valor
+      é só clicar em tenho interesse, preencher as informações e entramos em contato com você.`,
     },
     {
       title: '5 - Do que preciso para o atendimento online?',

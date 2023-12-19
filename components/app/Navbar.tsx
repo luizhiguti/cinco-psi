@@ -113,7 +113,7 @@ export default function Navbar() {
           color='white'
           onClick={onOpen}
         >
-          <Icon path={mdiMenu} boxSize='75%' />
+          <Icon path={mdiMenu} boxSize='75%' onClick={onOpen} />
         </IconButton>
         <Drawer
           isOpen={isOpen}

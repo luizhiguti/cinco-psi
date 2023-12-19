@@ -1,5 +1,6 @@
 import { Providers } from '@/lib/providers/providers';
 import type { Metadata } from 'next';
+import '@/styles/app.css';
 
 export const metadata: Metadata = {
   title: 'Cinco Psi',
