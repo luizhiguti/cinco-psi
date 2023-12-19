@@ -12,8 +12,8 @@ export default function Contacts() {
   const items = [
     {
       icon: mdiEmail,
-      text: 'contato@cincopsi.com',
-      href: 'mailto:contato@cincopsi.com',
+      text: 'contatocinco.psi@gmail.com',
+      href: 'mailto:contatocinco.psi@gmail.com',
     },
     {
       icon: mdiInstagram,
