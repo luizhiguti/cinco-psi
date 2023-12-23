@@ -14,6 +14,7 @@ export default function _About() {
   useEffect(() => {
     // get the element by id and use scrollIntoView
     const elem = document.getElementById(currentSection);
+    console.log('useEffect', elem);
     elem?.scrollIntoView({ behavior: 'smooth' });
   }, [currentSection]);
 
