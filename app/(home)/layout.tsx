@@ -12,7 +12,7 @@ export default function RootLayout({
     <Grid
       templateAreas={'"navbar" "main" "footer"'}
       templateColumns={'1fr'}
-      templateRows={{ base: '64px 1fr auto', md: '64px 1fr 96px' }}
+      templateRows={'64px 1fr auto'}
       minHeight='100vh'
     >
       <GridItem area='navbar'>
