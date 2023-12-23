@@ -1,3 +1,4 @@
+import { AppContext } from '@/contexts/app.context';
 import Box from '@/lib/components/Box';
 import Button from '@/lib/components/Button';
 import Drawer from '@/lib/components/Drawer';
@@ -11,6 +12,7 @@ import { useDisclosure } from '@chakra-ui/react';
 import { mdiMenu } from '@mdi/js';
 import NextLink from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
+import { useContext } from 'react';
 
 interface SectionButtonProps {
   children: React.ReactNode;
@@ -27,6 +29,7 @@ function SectionButton({
 }: SectionButtonProps) {
   const router = useRouter();
   const path = usePathname();
+  const { setCurrentSection } = useContext(AppContext);
 
   const handleNavigate = (e: React.MouseEvent) => {
     // prevent default behavior
@@ -35,18 +38,11 @@ function SectionButton({
     // custom navigation
     if (href !== path) router.push(href);
 
-    // custom behaviour on click
+    // custom onClick behaviour
     if (onClick) onClick();
 
     if (!section) return;
-    const targetId = section;
-
-    // await for 'document' update on route changes
-    setTimeout(() => {
-      // get the element by id and use scrollIntoView
-      const elem = document.getElementById(targetId);
-      elem?.scrollIntoView({ behavior: 'smooth' });
-    }, 100);
+    setCurrentSection(section);
   };
 
   return (
