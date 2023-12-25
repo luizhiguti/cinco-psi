@@ -9,15 +9,16 @@ import styles from '@/styles/about.module.scss';
 import { useContext, useEffect } from 'react';
 
 export default function _About() {
-  const { currentSection } = useContext(AppContext);
+  const context = useContext(AppContext);
 
   useEffect(() => {
     // get the element by id and use scrollIntoView
-    const elem = document.getElementById(currentSection);
-    console.log('useEffect', currentSection);
+    if (!context.currentSection) return;
+    const elem = document.getElementById(context.currentSection);
+    console.log('useEffect', context.currentSection);
     console.log('useEffect', elem);
     elem?.scrollIntoView({ behavior: 'smooth' });
-  }, [currentSection]);
+  }, [context]);
 
   return (
     <main className={styles.about}>
